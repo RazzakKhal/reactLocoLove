@@ -5,11 +5,20 @@ import Validators from "../ValidatorsPerso/Validators";
 import style from './accueil.module.css';
 
 function Accueil(){
+
+    // validators
     let validators = new Validators();
     let [mailMessage, setMailMessage] = useState("");
     let [passwordMessage, setPasswordMessage] = useState("");
     let [inscriptionMessage, setInscriptionMessage] = useState("");
 
+
+    // notifications
+    let [connexionNotification , setConnexionNotification] = useState(false);
+    let [inscriptionNotification , setInscriptionNotification] = useState(false);
+    let [notificationMessage, setNotificationMessage] = useState("");
+
+    // inputs values
     let [mail, setMail] = useState("");
     let [password, setPassword] = useState("");
     let [trainNumber, setTrainNumber] = useState("");
@@ -17,19 +26,40 @@ function Accueil(){
     let [lastname, setLastname] = useState("");
     let [pseudo, setPseudo] = useState("");
     let [dateOfBirth, setDateOfBirth] = useState("");
-    let [gender, setGender] = useState("");
+    let [gender, setGender] = useState("M");
 
    
 
     function connexionFormSubmit(event){
         event.preventDefault();
+        fetch("http://localhost:8080/accueil/connexion", {
+            method : "POST",
+            headers : {"Content-Type" : "application/json"},
+            body : JSON.stringify({
+                mail : mail,
+                password : password,
+                train_number : trainNumber
+
+            })
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            localStorage.setItem("token", data.token);
+            
+        })
+        .catch(() => {
+            setConnexionNotification(true);
+                setNotificationMessage("Veuillez vérifier vos identifiants");
+                setTimeout(() => setConnexionNotification(false) ,5000)
+        })
+        ;
+
         
     }
 
     function inscriptionFormSubmit(event){
         event.preventDefault();
         let user = new User(firstname, lastname, pseudo, dateOfBirth, mail, password, gender);
-
         if(firstname && lastname && pseudo && dateOfBirth && mail && password && gender && !mailMessage && !passwordMessage){
             fetch("http://localhost:8080/accueil/inscription", {
                 method : "POST",
@@ -38,7 +68,11 @@ function Accueil(){
     
             })
             .then((response) => response.json())
-            .then((data) => console.log(data));
+            .then((data) => {
+                setInscriptionNotification(true);
+                setNotificationMessage("Vous êtes inscris");
+                setTimeout(() => setInscriptionNotification(false) ,5000)
+            });
         }else{
             setInscriptionMessage("Veuillez Remplir tous les champs correctement");
         }
@@ -130,7 +164,8 @@ function Accueil(){
                 <span className={style.errorMessage}>{inscriptionMessage}</span>
             </form>
 
-
+            <div className={inscriptionNotification ? style.afficheNotif : style.cacheNotif }>{notificationMessage}</div>
+            <div className={connexionNotification ? style.afficheNotif : style.cacheNotif }>{notificationMessage}</div>
         </div>
     );
 

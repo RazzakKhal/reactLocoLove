@@ -59,4 +59,31 @@ select{
 
 .errorMessage{
     color : #970000;
+    font-weight: bolder;
+}
+
+.cacheNotif{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height : 0px;
+    font-size: 0px;
+    transition: all 0.5s ease;
+    width : 60vw;
+    border-radius: 10px;
+}
+
+.afficheNotif{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height : 50px;
+    width : 60vw;
+    font-size: 1em;
+    background-color: var(--colorOrange);
+    transition: all 0.5s ease;
+    border-radius: 10px;
 }
