@@ -1,7 +1,14 @@
 import { useState } from "react";
+import User from '../Classes/User';
+import Validators from "../ValidatorsPerso/Validators";
+
 import style from './accueil.module.css';
 
 function Accueil(){
+    let validators = new Validators();
+    let [mailMessage, setMailMessage] = useState("");
+    let [passwordMessage, setPasswordMessage] = useState("");
+    let [inscriptionMessage, setInscriptionMessage] = useState("");
 
     let [mail, setMail] = useState("");
     let [password, setPassword] = useState("");
@@ -12,6 +19,8 @@ function Accueil(){
     let [dateOfBirth, setDateOfBirth] = useState("");
     let [gender, setGender] = useState("");
 
+   
+
     function connexionFormSubmit(event){
         event.preventDefault();
         
@@ -19,9 +28,42 @@ function Accueil(){
 
     function inscriptionFormSubmit(event){
         event.preventDefault();
+        let user = new User(firstname, lastname, pseudo, dateOfBirth, mail, password, gender);
+
+        if(firstname && lastname && pseudo && dateOfBirth && mail && password && gender && !mailMessage && !passwordMessage){
+            fetch("http://localhost:8080/accueil/inscription", {
+                method : "POST",
+                headers : {"Content-Type" : "application/json"},
+                body : JSON.stringify(user)
+    
+            })
+            .then((response) => response.json())
+            .then((data) => console.log(data));
+        }else{
+            setInscriptionMessage("Veuillez Remplir tous les champs correctement");
+        }
+
+ 
+        
 
     }
 
+
+    function mailValidation(value){
+        if(value){
+            setMailMessage("");
+        }else{
+            setMailMessage("Votre mail ne semble pas valide");
+        }
+    }
+
+    function passwordValidation(value){
+        if(value){
+            setPasswordMessage("");
+        }else{
+            setPasswordMessage("Votre mot de passe doit contenir au moins un minuscule, un majuscule, un chiffre et un caractère special");
+        }
+    }
 
 
     return(
@@ -31,11 +73,13 @@ function Accueil(){
             <form onSubmit={(event) => connexionFormSubmit(event)}>
                 <p className={style.formTitle}>Connexion</p>
                 <div className={style.labelInput}>
-                <input type="text" value={mail} placeholder="Mail" onChange={(event) => setMail(event.target.value)}></input>
+                <input type="mail" value={mail} placeholder="Mail" onChange={(event) => {setMail(event.target.value); }}></input>
+                
                 </div>
 
                 <div className={style.labelInput}>
-                <input type="text" value={password} placeholder="Mot de passe" onChange={(event) => setPassword(event.target.value)}></input>
+                <input type="password" value={password} placeholder="Mot de passe" onChange={(event) => {setPassword(event.target.value); }}></input>
+                
                 </div>
 
                 <div className={style.labelInput}>
@@ -62,22 +106,28 @@ function Accueil(){
                 </div>
 
                 <div className={style.labelInput}>
-                <input type="text" value={dateOfBirth} placeholder="Date de Naissance" onChange={(event) => setDateOfBirth(event.target.value)}></input>
+                <input type="date" value={dateOfBirth} placeholder="Date de Naissance" onChange={(event) => setDateOfBirth(event.target.value)}></input>
                 </div>
 
                 <div className={style.labelInput}>
-                <input type="text" value={mail} placeholder="Mail" onChange={(event) => setMail(event.target.value)}></input>
+                <input type="mail" value={mail} placeholder="Mail" onChange={(event) =>{ setMail(event.target.value); mailValidation(validators.mailValidator(event.target.value))}}></input>
+                <span className={style.errorMessage}>{mailMessage}</span>
                 </div>
 
                 <div className={style.labelInput}>
-                <input type="text" value={password} placeholder="Mot de passe" onChange={(event) => setPassword(event.target.value)}></input>
+                <input type="password" value={password} placeholder="Mot de passe" onChange={(event) => {setPassword(event.target.value); passwordValidation(validators.passwordValidator(event.target.value))}}></input>
+                <span className={style.errorMessage}>{passwordMessage}</span>
                 </div>
 
                 <div className={style.labelInput}>
-                <input type="text" value={gender} placeholder="Genre" onChange={(event) => setGender(event.target.value)}></input>
+                    <select placeholder="Genre" onChange={(event) => setGender(event.target.value)} >
+                    <option value="M">Homme</option>
+                    <option value="F">Femme</option>
+                    </select>
                 </div>
 
                 <button type="submit">Inscription</button>
+                <span className={style.errorMessage}>{inscriptionMessage}</span>
             </form>
 
 

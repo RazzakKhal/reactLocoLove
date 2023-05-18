@@ -50,3 +50,13 @@ button{
     padding-bottom: 5px;
     font-weight: 400;
 }
+
+select{
+    width: 100%;
+    font-size: 1em;
+    border-radius: 8px;
+}
+
+.errorMessage{
+    color : #970000;
+}
