@@ -67,7 +67,7 @@ table {
 
 header{
   height : 10vh;
-  background-color: blue;
+  background-color: var(--colorGrey);
 }
 
 main{
@@ -81,7 +81,7 @@ footer{
 
 
 .App{
-	background-image: url('assets/images/backgroundLocolove.png');
+	background-image: url('../public/backgroundLocolove.png');
 	background-position: center;
 	background-size: cover;
 }
