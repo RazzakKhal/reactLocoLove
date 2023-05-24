@@ -4,6 +4,12 @@ ul{
     align-items: center;
 }
 
+.Link{
+    color: black;
+    text-decoration: none;
+
+}
+
 .logo{
     max-height: 9vh;
 }

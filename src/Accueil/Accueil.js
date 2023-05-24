@@ -2,6 +2,7 @@ import { useState } from "react";
 import User from '../Classes/User';
 import Validators from "../ValidatorsPerso/Validators";
 
+
 import style from './accueil.module.css';
 
 function Accueil(){
