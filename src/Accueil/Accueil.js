@@ -1,11 +1,13 @@
 import { useState } from "react";
 import User from '../Classes/User';
 import Validators from "../ValidatorsPerso/Validators";
+import {useNavigate} from 'react-router-dom';
 
 
 import style from './accueil.module.css';
 
 function Accueil(){
+    const navigate = useNavigate();
 
     // validators
     let validators = new Validators();
@@ -46,6 +48,7 @@ function Accueil(){
         .then((response) => response.json())
         .then((data) => {
             localStorage.setItem("token", data.token);
+            navigate('/myprofil');
             
         })
         .catch(() => {
