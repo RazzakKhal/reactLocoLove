@@ -35,6 +35,7 @@ function Accueil(){
 
     function connexionFormSubmit(event){
         event.preventDefault();
+        localStorage.setItem('mail', mail);
         fetch("http://localhost:8080/accueil/connexion", {
             method : "POST",
             headers : {"Content-Type" : "application/json"},
@@ -63,6 +64,7 @@ function Accueil(){
 
     function inscriptionFormSubmit(event){
         event.preventDefault();
+
         let user = new User(firstname, lastname, pseudo, dateOfBirth, mail, password, gender);
         if(firstname && lastname && pseudo && dateOfBirth && mail && password && gender && !mailMessage && !passwordMessage){
             fetch("http://localhost:8080/accueil/inscription", {

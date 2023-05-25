@@ -1,0 +1,70 @@
+.container{
+    padding-top: 10px;
+}
+
+/* ////////////////////////////////////////////////////// */
+.bloc1{
+    height : 30vh;
+    width : 70vw;
+    display : flex;
+    justify-content: center; 
+    align-items:center;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 auto;
+    background-color: var(--colorGrey);
+}
+
+.photo{
+    max-width: 70%;
+
+    
+}
+
+.pseudodate{
+    display:flex;
+    justify-content: space-between;
+
+}
+
+.appareilphoto{
+    max-height: 80%;
+    max-width: 20%;
+
+}
+
+.poubelle{
+    max-height: 80%;
+    max-width: 20%;
+
+}
+
+
+/* ////////////////////////////////////////////////////// */
+
+.bloc2{
+    height : 30vh;
+    width : 80vw;
+    margin : 0 auto;
+    margin-top : 10px;
+    display : flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--colorGrey);
+  
+}
+
+.bloctaille{
+    display : flex;
+    justify-content: space-between;
+}
+
+.tailleinput{
+    width : 40px;
+}
+
+.crayon{
+    max-height: 80%;
+    max-width: 20%;
+}
