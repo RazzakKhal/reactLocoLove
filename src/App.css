@@ -71,12 +71,14 @@ header{
 }
 
 main{
-  height: 80vh;
+  min-height: 80vh;
+  padding-bottom: 20px;
 }
 
 footer{
   height : 10vh;
   background-color: red;
+
 }
 
 
@@ -84,4 +86,5 @@ footer{
 	background-image: url('../public/backgroundLocolove.png');
 	background-position: center;
 	background-size: cover;
+	position: relative;
 }

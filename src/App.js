@@ -1,5 +1,5 @@
 import './App.css';
-import Accueil from './Accueil/Accueil';
+import Home from './Home/Home';
 import Header from './Header/Header';
 import MyProfil from './MyProfil/MyProfil';
 import Gallery from './Gallery/Gallery';
@@ -17,7 +17,7 @@ function App() {
           <Route path='/myprofil' element={<MyProfil />} ></Route>
           <Route path='/gallery' element={<Gallery />} ></Route>
           <Route path='/mylikes' element={<MyLikes />} ></Route>    
-          <Route path='/' element={<Accueil />} />
+          <Route path='/' element={<Home />} />
       </Routes>
       </main>
       <footer></footer>

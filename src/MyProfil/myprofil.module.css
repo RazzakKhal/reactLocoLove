@@ -4,39 +4,35 @@
 
 /* ////////////////////////////////////////////////////// */
 .bloc1{
-    height : 30vh;
-    width : 70vw;
+
+    width : 90vw;
     display : flex;
-    justify-content: center; 
+    justify-content: space-between; 
     align-items:center;
-    flex-direction: column;
     text-align: center;
     margin: 0 auto;
     background-color: var(--colorGrey);
+    border-radius: 10px;
 }
 
 .photo{
-    max-width: 70%;
+    height : 250px;
+    width: 250px;
+
 
     
 }
 
-.pseudodate{
-    display:flex;
-    justify-content: space-between;
-
-}
 
 .appareilphoto{
-    max-height: 80%;
-    max-width: 20%;
+    height : 50px;
+    align-self: flex-end;
 
 }
 
 .poubelle{
-    max-height: 80%;
-    max-width: 20%;
-
+    height : 50px;
+    align-self: flex-end;
 }
 
 
@@ -52,6 +48,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: var(--colorGrey);
+    border-radius: 10px;
   
 }
 
@@ -60,11 +57,55 @@
     justify-content: space-between;
 }
 
+.blocDescription{
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
 .tailleinput{
     width : 40px;
+    height :10px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .crayon{
-    max-height: 80%;
-    max-width: 20%;
+    width : 40px;
+    height :20px;
+}
+
+
+/* ////////////////////////////////////////////////////////////// */
+
+.bloc3{
+    height : 10vh;
+    width : 80vw;
+    margin : 0 auto;
+    margin-top : 30px;
+    display : flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--colorGrey);
+    border-radius: 10px;
+
+}
+
+.bloc3 input{
+    width : 15%;
+}
+
+.bloc3 p{
+    height : 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bloc3 img{
+    height : 80%;
 }

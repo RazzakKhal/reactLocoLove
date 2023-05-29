@@ -4,9 +4,9 @@ import Validators from "../ValidatorsPerso/Validators";
 import {useNavigate} from 'react-router-dom';
 
 
-import style from './accueil.module.css';
+import style from './home.module.css';
 
-function Accueil(){
+function Home(){
     const navigate = useNavigate();
 
     // validators
@@ -177,4 +177,4 @@ function Accueil(){
 
 }
 
-export default Accueil;
+export default Home;
