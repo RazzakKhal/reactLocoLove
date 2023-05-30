@@ -4,7 +4,7 @@
 
 /* ////////////////////////////////////////////////////// */
 .bloc1{
-
+    position: relative;
     width : 90vw;
     display : flex;
     justify-content: space-between; 
@@ -27,7 +27,18 @@
 .appareilphoto{
     height : 50px;
     align-self: flex-end;
+    
 
+}
+
+.pictureInput{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    height: 50px;
+    width: 80px;
+    cursor:pointer;
 }
 
 .poubelle{
