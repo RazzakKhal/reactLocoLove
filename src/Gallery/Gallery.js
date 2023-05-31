@@ -1,8 +1,57 @@
-function Gallery(){
+import ProfilCard from '../DeepComponents/ProfilCard/ProfilCard';
+import style from './gallery.module.css';
+import { useEffect, useState } from 'react';
 
-    return(<div>
-        je suis dans la page gallery
-    </div>)
+function Gallery(){
+   let [users, setUsers] = useState(''); 
+   let [myUser, setMyUser] = useState('');
+   let host = 'http://localhost:8080';
+   let headers = {
+       'Content-Type': 'application/json',
+       'Authorization': 'Bearer ' + localStorage.getItem('token')
+   }
+    // récupération de l'utilisateur
+    if (!myUser) {
+        fetch(`${host}/myProfil/getUser`, {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify({ mail: localStorage.getItem('mail') })
+        }).then((response) => response.json()).then((data) => { setMyUser(data);  })
+
+    }
+
+    function getAllUsers(){
+            // récupérer tous les utilisateur pour les transmettre a ProfilCard
+    if(myUser.gender === 'F'){
+ 
+        fetch(`${host}/galerie/homme/${myUser.id}`, {
+            method : 'GET',
+            headers : headers
+        }).then(response => response.json()).then(data => {setUsers(data);});
+    }else if(myUser.gender === 'M'){
+        console.log('hoho')
+        fetch(`${host}/galerie/femme/${myUser.id}`, {
+            method : 'GET',
+            headers : headers
+        }).then(response => response.json()).then(data => {setUsers(data); });
+    }else{
+
+    }
+
+    }
+
+    useEffect(() => {
+        getAllUsers();
+        console.log(users)
+    }, [myUser]);
+
+
+    return(
+    <div className={style.container}>
+        { users ? users.map((user) => <ProfilCard pseudo={user.pseudo} age={user.date_of_birth} images={user.pictures}></ProfilCard> ) : null}
+
+    </div>
+    )
 }
 
 export default Gallery;
