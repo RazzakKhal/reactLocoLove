@@ -42,13 +42,12 @@ function Gallery(){
 
     useEffect(() => {
         getAllUsers();
-        console.log(users)
     }, [myUser]);
 
 
     return(
     <div className={style.container}>
-        { users ? users.map((user) => <ProfilCard pseudo={user.pseudo} age={user.date_of_birth} images={user.pictures}></ProfilCard> ) : null}
+        { users ? users.map((user, index) => user.pictures.length > 0 ? <ProfilCard key={index} pseudo={user.pseudo} age={user.date_of_birth} images={user.pictures}></ProfilCard> : <ProfilCard key={index} pseudo={user.pseudo} age={user.date_of_birth} images={[{link : "avatar.png"}]}></ProfilCard> ) : null}
 
     </div>
     )
