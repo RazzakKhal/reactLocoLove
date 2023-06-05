@@ -6,6 +6,7 @@ import Gallery from './Gallery/Gallery';
 import MyLikes from './MyLikes/MyLikes';
 import { Routes, Route } from 'react-router-dom';
 import OtherProfil from './OtherProfil/OtherProfil';
+import Tchat from './Tchat/Tchat';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/gallery' element={<Gallery />} ></Route>
           <Route path='/mylikes' element={<MyLikes />} ></Route>    
           <Route path='/otherProfil/:id' element={<OtherProfil></OtherProfil>}></Route>
+          <Route path='/tchat/:id' element={<Tchat />}></Route>
           <Route path='/' element={<Home />} />
           
       </Routes>

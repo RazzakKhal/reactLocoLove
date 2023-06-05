@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import style from "./otherprofil.module.css";
 
 function OtherProfil(){
 
     const { id } = useParams();
+    const navigate = useNavigate();
     let [myUser, setMyUser] = useState('');
     let host = 'http://localhost:8080';
     let headers = {
@@ -32,7 +33,7 @@ function OtherProfil(){
                 <div className={style.pseudoAgeCom}>
                     <p>{myUser.pseudo}</p>
                     <p>{new Date(myUser.date_of_birth).toLocaleDateString('fr')}</p>
-                    <img className={style.message} src="message.png" alt="envoyer un message"></img>
+                    <img className={style.message} src="../message.png" alt="envoyer un message" onClick={() => navigate(`/tchat/${id}`)}></img>
                 </div>
             </div>
             <div className={style.bloc2}>
