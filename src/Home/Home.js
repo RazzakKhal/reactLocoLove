@@ -48,13 +48,20 @@ function Home(){
         })
         .then((response) => response.json())
         .then((data) => {
+            if(data.token){
             localStorage.setItem("token", data.token);
             navigate('/myprofil');
+        }else{
+            setConnexionNotification(true);
+            setNotificationMessage("Veuillez vérifier vos identifiants");
+            setTimeout(() => setConnexionNotification(false) ,5000)
+        }
+            
             
         })
         .catch(() => {
             setConnexionNotification(true);
-                setNotificationMessage("Veuillez vérifier vos identifiants");
+                setNotificationMessage("Erreur dans la tentative de connexion");
                 setTimeout(() => setConnexionNotification(false) ,5000)
         })
         ;

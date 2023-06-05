@@ -5,6 +5,7 @@ import MyProfil from './MyProfil/MyProfil';
 import Gallery from './Gallery/Gallery';
 import MyLikes from './MyLikes/MyLikes';
 import { Routes, Route } from 'react-router-dom';
+import OtherProfil from './OtherProfil/OtherProfil';
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
           <Route path='/myprofil' element={<MyProfil />} ></Route>
           <Route path='/gallery' element={<Gallery />} ></Route>
           <Route path='/mylikes' element={<MyLikes />} ></Route>    
+          <Route path='/otherProfil/:id' element={<OtherProfil></OtherProfil>}></Route>
           <Route path='/' element={<Home />} />
+          
       </Routes>
       </main>
       <footer></footer>

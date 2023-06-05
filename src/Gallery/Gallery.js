@@ -47,7 +47,7 @@ function Gallery(){
 
     return(
     <div className={style.container}>
-        { users ? users.map((user, index) => user.pictures.length > 0 ? <ProfilCard key={index} pseudo={user.pseudo} age={user.date_of_birth} images={user.pictures}></ProfilCard> : <ProfilCard key={index} pseudo={user.pseudo} age={user.date_of_birth} images={[{link : "avatar.png"}]}></ProfilCard> ) : null}
+        { users ? users.map((user, index) => user.pictures.length > 0 ? <ProfilCard key={index} pseudo={user.pseudo} age={user.date_of_birth} images={user.pictures} id={user.id}></ProfilCard> : <ProfilCard key={index} pseudo={user.pseudo} age={user.date_of_birth} images={[{link : "avatar.png"}]} id={user.id}></ProfilCard> ) : null}
 
     </div>
     )
